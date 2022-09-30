@@ -1,0 +1,207 @@
+
+.header {
+    background: rgba(230, 150, 3, 0.788);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.logoContainer {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+.logo {
+    transition: filter 0.3s ease-in-out;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+.headerAdress h3 a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.address {
+    transition: color 0.3s ease-in-out;
+}
+
+/* Animation for header adress */
+.headerAdress h3 {
+    position: relative;
+}
+
+.headerAdress h3 a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0px;
+    height: 8px;
+    width: 0%;
+    background-color: #fff;
+    border-radius: 0.4rem;
+    transition: width 0.32s ease-in-out;
+}
+
+.headerAdress h3 a:hover::after {
+    width: 100%;
+}
+
+.flagDarkLightContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Giving elements active class to change to dark mode on switch */
+body.active {
+    background: #1e272e;
+}
+
+.header.active {
+    background: #2d3436;
+}
+
+.logo.active {
+    filter: invert(15%) sepia(24%) saturate(272%) hue-rotate(146deg) brightness(96%) contrast(87%);
+}
+
+.address.active {
+    color: #b2bec3;
+}
+
+.fa-moon.active {
+    color: #b2bec3;
+}
+
+.fa-moon.active:hover {
+    color: #fff;
+    transform: scale(1.08);
+}
+
+.bar.active {
+    background-color: #b2bec3;
+}
+
+/* Giving elements active class to change to dark mode on switch (end) */
+
+/* Styling for english flag */
+.flagContainer {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+}
+
+.englishFlag {
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.englishFlag:hover {
+    transform: scale(1.08);
+}
+
+/* Specific styling for dark light switch */
+.darkLightMode {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+}
+
+.fa-moon {
+    font-size: 1.9rem;
+    cursor: pointer;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.fa-moon:hover {
+    color: rgba(0, 0, 0, 0.4);
+    transform: scale(1.08);
+}
+
+/* Hamburger menu */
+.toggleBtn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30px;
+    height: 24px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.bar {
+    width: 30px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 4rem;
+}
+
+/* Media queries */
+@media (max-width: 1050px) {
+    .header {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .flagDarkLightContainer {
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
+    }
+
+    .logo {
+        padding: 0;
+    }
+
+    .toggleBtn {
+        display: flex;
+    }
+
+    .logoContainer {
+        display: none;
+    }
+
+    .headerAdress {
+        display: none;
+    }
+
+    .flagDarkLightContainer {
+        display: none;
+    }
+
+    .logoContainer.active {
+        display: flex;
+    }
+
+    .headerAdress.active {
+        display: flex;
+    }
+
+    .flagDarkLightContainer.active {
+        display: flex;
+    }
+}
+
+/* Media query for devices under 370px */
+@media (max-width: 370px) {
+    .logo {
+        width: 10rem;
+    }
+
+    .headerAdress {
+        text-align: center;
+    }
+
+    .address {
+        font-size: 1.2rem;
+    }
+
+}
