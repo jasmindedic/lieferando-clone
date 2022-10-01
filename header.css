@@ -59,6 +59,7 @@
 /* Giving elements active class to change to dark mode on switch */
 body.active {
     background: #1e272e;
+    color: #fff;
 }
 
 .header.active {
@@ -84,6 +85,11 @@ body.active {
 
 .bar.active {
     background-color: #b2bec3;
+}
+
+.restaurantLogo.active {
+    /* filter: invert(14%) sepia(8%) saturate(2922%) hue-rotate(168deg) brightness(94%) contrast(77%); */
+    filter: invert(90%) sepia(94%) saturate(272%) hue-rotate(146deg) brightness(116%) contrast(117%);
 }
 
 /* Giving elements active class to change to dark mode on switch (end) */
@@ -150,6 +156,11 @@ body.active {
     .header {
         flex-direction: column;
         gap: 0.6rem;
+        height: 6rem;
+    }
+
+    .header.activeHeight {
+        height: 12rem;
     }
 
     .flagDarkLightContainer {

@@ -6,9 +6,267 @@
 }
 
 body {
-    background: #ededed;
     font-family: "Poppins", sans-serif;
     transition: background 0.3s ease-in-out;
+    height: 100vh;
+}
+
+/* Content styling */
+
+/* Layouting left and right section */
+.content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.restaurantSection {
+    width: 70%;
+}
+
+.shoppingBasket {
+    width: 30%;
+    height: 100%;
+    box-shadow: -8px 0px 3px -7px gray;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+/* Layouting and styling shopping basket */
+
+.subtotalContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-bottom: 0.4rem;
+}
+
+.totalPriceContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.4rem;
+    padding-bottom: 1rem;
+}
+
+.basketTitle {
+    margin-bottom: 1rem;
+}
+
+.fa-bag-shopping {
+    margin-top: 4rem;
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.payBtn {
+    width: 14rem;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.payBtn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.04);
+}
+/* Shopping basket end */
+
+/* Styling for restaurant section */
+.imageLogo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.pizzaImg {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+}
+
+.restaurantLogo {
+    width: 10rem;
+    position: absolute;
+    bottom: -20%;
+}
+
+/* Styling for title and two buttons */
+.titleBtnContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.restaurantTitle {
+    font-size: 1.8rem;
+}
+
+.twoBtn button {
+    cursor: pointer;
+}
+
+.twoBtn .fa-circle-info {
+    color: #a29bfe;
+    font-size: 1.4rem;
+    padding: 0.8rem;
+    background: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.twoBtn .fa-circle-info:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.twoBtn .fa-heart {
+    color: #e67e22;
+    font-size: 1.4rem;
+    padding: 0.8rem;
+    background: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.twoBtn .fa-heart:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.ratingContainer {
+    display: flex;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.stars {
+    display: flex;
+}
+
+.stars li {
+    list-style-type: none;
+}
+
+.fa-star {
+    color: #e67e22;
+}
+
+#lastStar {
+    color: rgba(0, 0, 0, 0.2)
+    
+}
+
+.rating {
+    padding-right: 0.4rem;
+    padding-left: 0.4rem;
+}
+
+.rating a {
+    text-decoration: none;
+    color: #e67e22;
+}
+
+/* Styling for shipping info */
+.shippingInfoContainer {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: gray;
+    margin-top: 1rem;
+}
+
+.infos {
+    display: flex;
+    gap: 1.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.infos div {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* Styling for option bar */
+.optionBarContainer {
+    background: rgba(0, 0, 0, 0.04);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.optionBar {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.optionBarList {
+    display: flex;
+    gap: 2rem;
+}
+
+.optionBarList li {
+    list-style-type: none;
+    position: relative;
+}
+
+.optionBarList li a {
+    text-decoration: none;
+    color: black;
+}
+
+.optionBarList li i {
+    font-size: 1.3rem;
+}
+
+/* Setup hover animation for option bar links */
+.optionBarList li a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0px;
+    width: 0%;
+    height: 8px;
+    border-radius: 4rem;
+    background: rgba(0, 0, 0, 0.3);
+    transition: width 0.3s ease-in-out;
+
+}
+
+.optionBarList li a:hover:after {
+    width: 100%;
 }
 
 
+/* Styling for most popular dishes section */
+.popularDishesContainer {
+    margin-top: 1rem;
+}
+
+.popDishHeadlineContainer {
+    background: rgba(0, 0, 0, 0.04);
+    margin-right: 1rem;
+    margin-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+}
+
+.popularDishHeadliner {
+    padding-left: 1.4rem;
+}
+
+
+/* Webkit to hide scrollbar */
+::-webkit-scrollbar {
+    display: none;
+  }
