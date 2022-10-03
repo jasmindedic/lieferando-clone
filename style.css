@@ -8,7 +8,6 @@
 body {
     font-family: "Poppins", sans-serif;
     transition: background 0.3s ease-in-out;
-    height: 100vh;
 }
 
 /* Content styling */
@@ -22,11 +21,11 @@ body {
 
 .restaurantSection {
     width: 70%;
+    margin-bottom: 1rem;
 }
 
 .shoppingBasket {
     width: 30%;
-    height: 100%;
     box-shadow: -8px 0px 3px -7px gray;
     display: flex;
     flex-direction: column;
@@ -34,6 +33,12 @@ body {
     padding: 1rem;
     gap: 2rem;
 }
+
+.wrapperSticky {
+   position: sticky;
+   top: 0;
+}
+
 
 /* Layouting and styling shopping basket */
 
@@ -59,6 +64,15 @@ body {
     margin-top: 4rem;
     font-size: 2rem;
     color: rgba(0, 0, 0, 0.5);
+}
+
+.pickMenuText {
+    padding-bottom: 1rem;
+}
+
+.minOrder {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .payBtn {
@@ -237,12 +251,12 @@ body {
     width: 0%;
     height: 8px;
     border-radius: 4rem;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgb(180, 179, 179);
     transition: width 0.3s ease-in-out;
 
 }
 
-.optionBarList li a:hover:after {
+.optionBarList li a:hover::after {
     width: 100%;
 }
 
@@ -264,6 +278,51 @@ body {
 .popularDishHeadliner {
     padding-left: 1.4rem;
 }
+
+/* Styling dish container */
+.dishSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 1rem;
+}
+
+.dishBox {
+    position: relative;
+    border: 1px solid rgb(196, 190, 190);
+    padding-left: 1rem;
+    cursor: pointer;
+}
+
+.dishBox h3{
+    padding-top: 1rem;
+}
+
+.dishDesc {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: gray;
+    font-size: 0.9rem;
+}
+
+.dishPrice {
+    padding-bottom: 1rem;
+    color: #e67e22;
+    font-weight: bold;
+}
+
+.fa-plus {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 1.2rem;
+}
+
+
+
+/* Styling for dish container with image and title */
 
 
 /* Webkit to hide scrollbar */

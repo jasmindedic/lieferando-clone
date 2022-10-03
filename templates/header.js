@@ -35,10 +35,12 @@ function darkLightMode() {
     // Get needed elements
     let bodyElem = document.querySelector("body");
     let header = document.querySelector(".header");
+    let footer = document.querySelector(".footer");
     let logo = document.querySelector(".logo");
     let headerAdress = document.querySelector(".address");
     let moonIcon = document.querySelector(".fa-moon");
     let hamburgerBars = document.querySelectorAll(".bar");
+    let darkToLightElem = document.querySelectorAll(".darkMode");
 
     // Content elements
     let restaurantLogo = document.querySelector(".restaurantLogo");
@@ -46,9 +48,15 @@ function darkLightMode() {
     // Toggle active class
     bodyElem.classList.toggle("active");
     header.classList.toggle("active");
+    footer.classList.toggle("active");
     logo.classList.toggle("active");
     headerAdress.classList.toggle("active");
     moonIcon.classList.toggle("active");
+
+    // ForEach loop to iterate over all elements with "darkToLightElem" class to toggle them all at once
+    darkToLightElem.forEach(elem => {
+        elem.classList.toggle("active");
+    });
 
     // ForEach loop to iterate over all three bars and apply same toggle at the same time
     hamburgerBars.forEach(bar => {

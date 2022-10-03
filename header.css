@@ -66,6 +66,10 @@ body.active {
     background: #2d3436;
 }
 
+.footer.active {
+    background: #2d3436;
+}
+
 .logo.active {
     filter: invert(15%) sepia(24%) saturate(272%) hue-rotate(146deg) brightness(96%) contrast(87%);
 }
@@ -90,6 +94,19 @@ body.active {
 .restaurantLogo.active {
     /* filter: invert(14%) sepia(8%) saturate(2922%) hue-rotate(168deg) brightness(94%) contrast(77%); */
     filter: invert(90%) sepia(94%) saturate(272%) hue-rotate(146deg) brightness(116%) contrast(117%);
+}
+
+.darkMode.active {
+    color: #fff;
+}
+
+.payBtn.darkMode.active {
+    background-color: #fff;
+    color: #1e272e;
+}
+
+.payBtn.darkMode.active:hover {
+    background-color: gray
 }
 
 /* Giving elements active class to change to dark mode on switch (end) */

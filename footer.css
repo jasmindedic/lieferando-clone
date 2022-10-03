@@ -1,0 +1,76 @@
+
+
+.footer {
+    background: rgba(230, 150, 3, 0.788);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.footerLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footerRight {
+    display: flex;
+    gap: 8rem;
+}
+
+.footer li {
+    list-style-type: none;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #fff;
+}
+
+
+.socialLinks {
+    display: flex;
+    gap: 2.3rem;
+}
+
+
+.socialLinks i {
+    font-size: 2rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.socialLinks i:hover {
+    transform: scale(1.1);
+    color: rgb(228, 222, 222);
+}
+
+
+
+
+.rightLinks li {
+    position: relative;
+}
+
+.rightLinks li  {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+/* Setup hover animation for right footer links */
+.rightLinks li a::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0px;
+    width: 0%;
+    height: 6px;
+    border-radius: 4rem;
+    background: #fff;
+    transition: width 0.3s ease-in-out;
+}
+
+.rightLinks li a:hover::after {
+    width: 100%;
+}
