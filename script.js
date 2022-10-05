@@ -94,8 +94,9 @@ function generateBasket() {
     <!-- Shopping basket -->
     <div class="shoppingBasket">
         <div class="wrapperSticky"> 
+        <h3 class="basketTitle">Warenkorb</h3>
+        <hr class="d-none basketHR">
             <div class="basketStatus">
-                <h3 class="basketTitle">Warenkorb</h3>
                 <hr>
                 <i class="fa-solid fa-bag-shopping darkMode"></i>
                 <p class="pickMenuText">Wähle leckere Gerichte aus der Karte und <br> bestelle Dein Menü</p>
@@ -163,6 +164,7 @@ function addDish(i) {
         dishes[i].amount++;
     } else {
         basketDishes.push(dishes[i]);
+        dishes[i].amount++;
     }
 
 
@@ -175,7 +177,6 @@ function addDish(i) {
 }
 
 
-
 /* Function to make elements in shopping basket display none */
 function changeVisibility() {
     let basketOder = document.querySelector(".minOrder");
@@ -185,6 +186,7 @@ function changeVisibility() {
         document.querySelector(".pickMenuText").classList.add("d-none");
         document.querySelector(".minOrder").classList.add("d-none");
         document.querySelector("#hr").classList.add("d-none");
+        document.querySelector(".basketHR").classList.remove("d-none");
 
         /* Add padding top to pay button */
         let payBtn = document.querySelector(".payBtn");
@@ -223,40 +225,42 @@ function showDishTemplate(basketDish, index) {
 // Function to sum up total price, with shipping expanses
 function getBasketPrice() {
     let sum = 0;
+    let shipping = 3.9;
+    sum = sum + shipping;
     let total = document.querySelector(".total");
     total.innerHTML = "";
     for (let index = 0; index < basketDishes.length; index++) {
         const element = basketDishes[index];
         sum = sum + (element['price'] * element['amount']);
     }
-    return total.innerHTML += sum.toFixed(2);
+    return total.innerHTML += sum.toFixed(2) + "€";
 }
 
 
 // Function to get sub total, without shipping expanses
 function getBasketSubTotal() {
     let sum = 0;
-    let shipping = 3.9;
-    sum = sum - shipping;
     let subTotal = document.querySelector(".subTotal");
     subTotal.innerHTML = "";
     for (let index = 0; index < basketDishes.length; index++) {
         const element = basketDishes[index];
         sum = sum + (element['price'] * element['amount']);
     }
-    return subTotal.innerHTML += sum.toFixed(2);
+    return subTotal.innerHTML += sum.toFixed(2) + "€";
 }
 
 // Function to show total price amount on button (under 900px)
 function getBasketPriceButton() {
     let sum = 0;
+    let shipping = 3.9;
+    sum = sum + shipping;
     let totalBtn = document.querySelector(".totalBtn");
     totalBtn.innerHTML = "";
     for (let index = 0; index < basketDishes.length; index++) {
         const element = basketDishes[index];
         sum = sum + (element['price'] * element['amount']);
     }
-    return totalBtn.innerHTML += sum.toFixed(2);
+    return totalBtn.innerHTML += sum.toFixed(2) + "€";
 }
 
 
@@ -271,13 +275,21 @@ function increaseAmount(index) {
 
 // Function to decrease amount 
 function decreaseAmount(index) {
+
     // First check if amount is bigger than zero 
-    if (basketDishes[index].amount > 0) {
+    if (basketDishes[index].amount > 1) {
 
         basketDishes[index].amount--;
         getBasketPrice();
         getBasketSubTotal();
         getBasketPriceButton()
         showBasketDishes();
+
     }
+
+    // Delete dish from basket if amount is 1 and gets clicked
+    /*  if (basketDishes[index].amount == 1) {
+         basketDishes.splice(index, 1);
+         console.log("works");
+     } */
 }

@@ -74,6 +74,19 @@
 
 
 /* Media queries */
+@media (min-width: 2000px) {
+    .footer {
+        padding-right: 4rem;
+        padding-left: 4rem;
+    }
+}
+
+@media (min-width: 2200px) {
+    .footer {
+        padding-right: 6rem;
+    }
+}
+
 @media (max-width: 900px) {
     .footer {
         flex-direction: column;

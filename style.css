@@ -351,6 +351,7 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
+
 .basketPlus:hover, .basketMinus:hover {
     background-color: rgb(175, 169, 169);
 }

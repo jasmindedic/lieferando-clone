@@ -14,9 +14,9 @@ let dishes = [
         "amount": 0
     },
     {
-        "name": "Pizza Chicago",
+        "name": "Pizza Funghi",
         "desc": "mit hausgemachtem Cheddar Käse und knusprigen Teig",
-        "price": 14.95,
+        "price": 10.95,
         "amount": 0
     },
     /* Dish 1 */
