@@ -1,19 +1,13 @@
-// Global variables
+// Global variable
+const basketDishes = [];
 // Get main container where the generated content will go
 let contentContainer = document.querySelector(".content");
-
-
-/* Array for images */
-let dishImages = [
-    "./images/pizza_banner.jpg",
-    "./images/pommes.jpg",
-    "./images/burger.jpg"
-];
 
 /* Onload functions, (Function that i will run onload in the body). With this construct i have them at one place 
 and only need to call the onload() function to run all of them in the body */
 function onLoad() {
     generateHeader();
+    generateFooter();
     render()
 }
 
@@ -22,6 +16,7 @@ function render() {
     contentContainer.innerHTML = "";
     contentContainer.innerHTML += generateRestaurantSection();
     contentContainer.innerHTML += generateBasket();
+    contentContainer.innerHTML += generateButton();
     generateFirstDishSec();
 }
 
@@ -60,7 +55,7 @@ function generateRestaurantSection() {
                 </div>
                 <div class="shippingCost">
                     <i class="fa-solid fa-bicycle"></i>
-                    <p>1,90€</p>
+                    <p>3,90€</p>
                 </div>
                 <div class="orderMin">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -107,7 +102,7 @@ function generateBasket() {
             </div>
             <!-- Total and subtotal price  -->
             <div class="pricesSum">
-                <hr>
+                <hr id="hr">
                 <div class="subtotalContainer">
                     <p class="subtotalText">Zwischensumme</p>
                     <p class="subTotal">0.00€</p>
@@ -132,8 +127,6 @@ function generateBasket() {
 }
 
 // Functions to generate dishes section
-// First function to generate first dish section
-// Second function is for the rest
 function generateFirstDishSec() {
     for (let i = 0; i < dishes.length; i++) {
         const dish = dishes[i];
@@ -142,20 +135,149 @@ function generateFirstDishSec() {
 
         restaurantSection.innerHTML += `
             <div id="dishImg${i}" class="dishSection">
-            <div class="dishBox" onclick="addDish()">
+            <div class="dishBox" onclick="addDish(${i})">
                 <h3>${dish["name"]}</h3>
                 <p class="dishDesc">${dish["desc"]}</p>
                 <p class="dishPrice">${dish["price"]}</p>
-                <i class="fa-solid fa-plus"></i>
+                <i class="fa-solid fa-plus dishBoxPlus"></i>
             </div>
             </div>
         `;
     }
 }
 
-
-// Function to add clicked dish to localstorage
-function addDish() {
-    console.log("It works!!")
+// Generate button when width is under 900px to show price
+function generateButton() {
+    return /* html */`
+        <div class="btnContainer">
+            <button class="totalBtn invisibleBtn">0.00€</button>
+        </div>
+    `;
 }
 
+
+// Function to add clicked dish to localstorage
+function addDish(i) {
+
+    if (basketDishes.includes(dishes[i])) {
+        dishes[i].amount++;
+    } else {
+        basketDishes.push(dishes[i]);
+    }
+
+
+    // Invoke functions
+    changeVisibility();
+    getBasketSubTotal()
+    getBasketPrice();
+    getBasketPriceButton()
+    showBasketDishes();
+}
+
+
+
+/* Function to make elements in shopping basket display none */
+function changeVisibility() {
+    let basketOder = document.querySelector(".minOrder");
+
+    if (!basketOder.classList.contains("d-none")) {
+        document.querySelector(".fa-bag-shopping").classList.add("d-none");
+        document.querySelector(".pickMenuText").classList.add("d-none");
+        document.querySelector(".minOrder").classList.add("d-none");
+        document.querySelector("#hr").classList.add("d-none");
+
+        /* Add padding top to pay button */
+        let payBtn = document.querySelector(".payBtn");
+        payBtn.style.marginTop = "1rem";
+    }
+}
+
+// Function to show stored names and prices in the shopping basket 
+function showBasketDishes() {
+    let basketContainer = document.querySelector(".basketStatus");
+    basketContainer.innerHTML = "";
+    for (let index = 0; index < basketDishes.length; index++) {
+        basketContainer.innerHTML += showDishTemplate(basketDishes[index], index);
+    }
+}
+
+
+// Function to create needed content to show dish in the basket
+function showDishTemplate(basketDish, index) {
+    return /*html*/`
+        <div class="showDish">
+            <div class="namePrice">
+                <p>${basketDish['amount']}</p>
+                <p>${basketDish['name']}</p>
+                <p>${basketDish['price']}</p>
+            </div>
+            <div class="basketPlusMinus">
+                <i class="fa-solid fa-plus basketPlus" onclick="increaseAmount(${index})"></i>
+                <i class="fa-solid fa-minus basketMinus"onclick="decreaseAmount(${index})"></i>
+            </div>
+            <hr>
+        </div>
+    `;
+}
+
+// Function to sum up total price, with shipping expanses
+function getBasketPrice() {
+    let sum = 0;
+    let total = document.querySelector(".total");
+    total.innerHTML = "";
+    for (let index = 0; index < basketDishes.length; index++) {
+        const element = basketDishes[index];
+        sum = sum + (element['price'] * element['amount']);
+    }
+    return total.innerHTML += sum.toFixed(2);
+}
+
+
+// Function to get sub total, without shipping expanses
+function getBasketSubTotal() {
+    let sum = 0;
+    let shipping = 3.9;
+    sum = sum - shipping;
+    let subTotal = document.querySelector(".subTotal");
+    subTotal.innerHTML = "";
+    for (let index = 0; index < basketDishes.length; index++) {
+        const element = basketDishes[index];
+        sum = sum + (element['price'] * element['amount']);
+    }
+    return subTotal.innerHTML += sum.toFixed(2);
+}
+
+// Function to show total price amount on button (under 900px)
+function getBasketPriceButton() {
+    let sum = 0;
+    let totalBtn = document.querySelector(".totalBtn");
+    totalBtn.innerHTML = "";
+    for (let index = 0; index < basketDishes.length; index++) {
+        const element = basketDishes[index];
+        sum = sum + (element['price'] * element['amount']);
+    }
+    return totalBtn.innerHTML += sum.toFixed(2);
+}
+
+
+// Function to increase amount 
+function increaseAmount(index) {
+    basketDishes[index].amount++;
+    getBasketPrice();
+    getBasketSubTotal();
+    getBasketPriceButton()
+    showBasketDishes();
+}
+
+// Function to decrease amount 
+function decreaseAmount(index) {
+    // First check if amount is bigger than zero 
+    if (basketDishes[index].amount > 0) {
+
+        basketDishes[index].amount--;
+        getBasketPrice();
+        getBasketSubTotal();
+        getBasketPriceButton()
+        showBasketDishes();
+    }
+}

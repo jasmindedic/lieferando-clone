@@ -46,9 +46,6 @@
     color: rgb(228, 222, 222);
 }
 
-
-
-
 .rightLinks li {
     position: relative;
 }
@@ -73,4 +70,24 @@
 
 .rightLinks li a:hover::after {
     width: 100%;
+}
+
+
+/* Media queries */
+@media (max-width: 900px) {
+    .footer {
+        flex-direction: column;
+    }
+
+    .footerRight {
+        flex-direction: column;
+        gap: 3rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .footerLeft {
+        margin-top: 1rem;
+    }
 }

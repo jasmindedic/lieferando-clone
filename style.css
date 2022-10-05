@@ -294,6 +294,11 @@ body {
     border: 1px solid rgb(196, 190, 190);
     padding-left: 1rem;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.dishBox:hover {
+    background: rgb(207, 203, 203);
 }
 
 .dishBox h3{
@@ -313,19 +318,132 @@ body {
     font-weight: bold;
 }
 
-.fa-plus {
+.dishBoxPlus {
     position: absolute;
     top: 6px;
     right: 6px;
     font-size: 1.2rem;
 }
 
+/* Section for showing dishes on shopping basket after user clicks */
+.namePrice {
+    display: flex;
+    justify-content: space-evenly;
+}
 
+.basketPlusMinus {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
 
-/* Styling for dish container with image and title */
+.basketPlus, .basketMinus {
+    border: 1px solid gray;
+    padding: 0.2rem 0.4rem;
+    background-color: gray;
+    color: #fff;
+    border-radius: 0.2rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
 
+.basketPlus:hover, .basketMinus:hover {
+    background-color: rgb(175, 169, 169);
+}
+
+/* Styling for button when width is under 900px */
+.btnContainer {
+    display: none;
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+    left: 1%;
+    z-index: 2;
+}
+
+.invisibleBtn {
+    background-color: #3a5877;
+    width: 100vw;
+    height: 3rem;
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.invisibleBtn:hover {
+    background-color: #5c87b3;
+}
+
+/* Display none  */
+.d-none {
+    display: none;
+}
 
 /* Webkit to hide scrollbar */
 ::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Media queries */
+  @media (min-width: 1650px) {
+    .restaurantSection {
+        width: 80%;
+    }
+
+    .shoppingBasket {
+        width: 20%;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .shoppingBasket {
+        display: none;
+    }
+
+    .restaurantSection {
+        width: 100%;
+    }
+    
+    .btnContainer {
+        display: flex;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .restaurantLogo {
+        bottom: -10%;
+    }
+
+    .restaurantTitle {
+        font-size: 1.6rem;
+    }
+
+    .shippingInfoContainer p {
+        font-size: 0.8rem;
+    }
+
+    .optionBarContainer {
+        display: none;
+    }
+
+    .twoBtn .fa-circle-info, .twoBtn .fa-heart {
+        font-size: 1rem;
+        padding: 0.2rem;
+    }
+  }
+
+  
+  @media (max-width: 320px) {
+    .shippingInfoContainer p {
+        font-size: 0.7rem;
+    }
+
+    .rating a {
+        font-size: 0.8rem;
+    }
   }
