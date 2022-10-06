@@ -8,7 +8,7 @@ and only need to call the onload() function to run all of them in the body */
 function onLoad() {
     generateHeader();
     generateFooter();
-    render()
+    render();
 }
 
 // Render function
@@ -174,6 +174,7 @@ function addDish(i) {
     getBasketPrice();
     getBasketPriceButton()
     showBasketDishes();
+    saveDishes();
 }
 
 
@@ -292,4 +293,20 @@ function decreaseAmount(index) {
          basketDishes.splice(index, 1);
          console.log("works");
      } */
+}
+
+/* Localstorage */
+function saveDishes() {
+    // Convert to JSON string
+    let dishToLocalStorage = JSON.stringify(basketDishes);
+    localStorage.setItem("dish", dishToLocalStorage);
+}
+
+function loadDishes() {
+    // Convert to an array
+    let dishFromLocalStorage = JSON.parse(localStorage.getItem("dish"));
+
+    if (dishFromLocalStorage) {
+        basketDishes = dishFromLocalStorage;
+    }
 }
