@@ -1,5 +1,5 @@
 // Global variable
-const basketDishes = [];
+let basketDishes = [];
 // Get main container where the generated content will go
 let contentContainer = document.querySelector(".content");
 
@@ -281,12 +281,14 @@ function decreaseAmount(index) {
     if (basketDishes[index].amount > 1) {
 
         basketDishes[index].amount--;
-        getBasketPrice();
-        getBasketSubTotal();
-        getBasketPriceButton()
-        showBasketDishes();
 
+    } else {
+        basketDishes.splice(index, 1);
     }
+    getBasketPrice();
+    getBasketSubTotal();
+    getBasketPriceButton()
+    showBasketDishes();
 
     // Delete dish from basket if amount is 1 and gets clicked
     /*  if (basketDishes[index].amount == 1) {
