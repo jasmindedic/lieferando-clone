@@ -151,7 +151,7 @@ function generateFirstDishSec() {
 function generateButton() {
     return /* html */`
         <div class="btnContainer">
-            <button class="totalBtn invisibleBtn">0.00€</button>
+            <button class="totalBtn invisibleBtn" onclick="showMobileBasket()">0.00€</button>
         </div>
     `;
 }
@@ -210,9 +210,9 @@ function showDishTemplate(basketDish, index) {
     return /*html*/`
         <div class="showDish">
             <div class="namePrice">
-                <p>${basketDish['amount']}</p>
+                <p class="basketAmount">${basketDish['amount']}</p>
                 <p>${basketDish['name']}</p>
-                <p>${basketDish['price']}</p>
+                <p class="basketPrice">${basketDish['price']}</p>
             </div>
             <div class="basketPlusMinus">
                 <i class="fa-solid fa-plus basketPlus" onclick="increaseAmount(${index})"></i>
@@ -279,15 +279,13 @@ function decreaseAmount(index) {
 
     // First check if amount is bigger than zero 
     if (basketDishes[index].amount > 1) {
-
         basketDishes[index].amount--;
-
     } else {
         basketDishes.splice(index, 1);
     }
     getBasketPrice();
     getBasketSubTotal();
-    getBasketPriceButton()
+    getBasketPriceButton();
     showBasketDishes();
 
     // Delete dish from basket if amount is 1 and gets clicked
@@ -296,6 +294,24 @@ function decreaseAmount(index) {
          console.log("works");
      } */
 }
+
+
+/* Function to show shopping basket in mobile when clicked on button */
+function showMobileBasket() {
+    let shoppingBasketContainer = document.querySelector(".shoppingBasket");
+    let restaurantSection = document.querySelector(".restaurantSection");
+    let btnContainerMobile = document.querySelector(".btnContainer");
+    let footerContainer = document.querySelector(".footer");
+    let invisibleBtn = document.querySelector(".invisibleBtn");
+
+    shoppingBasketContainer.classList.toggle("active");
+    restaurantSection.classList.toggle("active");
+    btnContainerMobile.classList.toggle("active");
+    footerContainer.classList.toggle("activeMobile");
+    invisibleBtn.classList.toggle("active");
+}
+
+
 
 /* Localstorage */
 function saveDishes() {

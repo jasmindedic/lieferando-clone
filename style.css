@@ -329,6 +329,17 @@ body {
 .namePrice {
     display: flex;
     justify-content: space-evenly;
+    position: relative;
+}
+
+.basketAmount {
+    position: absolute;
+    left: 10px;
+}
+
+.basketPrice {
+    position: absolute;
+    right: 10px;
 }
 
 .basketPlusMinus {
@@ -380,6 +391,33 @@ body {
     background-color: #5c87b3;
 }
 
+/* Styles whe user clicks on pay button when on mobile */
+.btnContainer.active {
+    display: flex;
+    justify-content: center;
+}
+
+.shoppingBasket.active {
+    display: flex;
+    width: 100%;
+}
+
+.restaurantSection.active {
+    display: none;
+}
+
+.footer.activeMobile {
+    display: none;
+}
+
+@media (min-width: 1300px) {
+    .invisibleBtn.active {
+        width: 30vw;
+    }
+}
+
+/* Styles whe user clicks on pay button when on mobile */
+
 /* Display none  */
 .d-none {
     display: none;
@@ -398,6 +436,26 @@ body {
 
     .shoppingBasket {
         width: 20%;
+    }
+  }
+
+  @media (max-width: 1220px) {
+    .restaurantSection {
+        width:65%;
+    }
+
+    .shoppingBasket {
+        width: 35%;
+    }
+  }
+
+  @media (max-width: 1060px) {
+    .restaurantSection {
+        width:60%;
+    }
+
+    .shoppingBasket {
+        width: 40%;
     }
   }
 
@@ -448,3 +506,4 @@ body {
         font-size: 0.8rem;
     }
   }
+
